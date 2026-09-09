@@ -1,0 +1,45 @@
+:root {
+  color-scheme: light;
+
+  --verde: #3aaa35;
+  --verde-escuro: #2c8a2a;
+  --lima: #c6d600;
+  --lima-escuro: #b2c000;
+
+  --texto: #333333;
+  --titulo: #4a4a4a;
+  --cinza: #6f726f;
+  --fundo: #ffffff;
+  --fundo-secao: #f4f6f2;
+  --borda: #dfe4de;
+  --erro: #c0392b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--texto);
+  background: var(--fundo);
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2 {
+  color: var(--titulo);
+}
+
+a {
+  color: var(--verde-escuro);
+}

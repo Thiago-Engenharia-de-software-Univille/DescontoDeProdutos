@@ -1,0 +1,138 @@
+.pagina {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.cabecalho {
+  font-weight: 600;
+  color: var(--verde-escuro);
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--verde);
+  margin-bottom: 24px;
+}
+
+.titulo {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+
+.regras {
+  margin: 8px 0 24px 20px;
+  color: var(--cinza);
+}
+
+.regras li {
+  margin-bottom: 4px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--fundo-secao);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--titulo);
+}
+
+.campo input {
+  font: inherit;
+  font-weight: 400;
+  padding: 9px 11px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.campo input:focus {
+  outline: 2px solid var(--verde);
+  outline-offset: 1px;
+  border-color: var(--verde);
+}
+
+.formulario button {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  background: var(--lima);
+  color: #1c1c1c;
+}
+
+.formulario button:hover {
+  background: var(--lima-escuro);
+}
+
+.erro {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-left: 4px solid var(--erro);
+  background: #fdecea;
+  color: var(--erro);
+}
+
+.resultado {
+  width: 100%;
+  margin-top: 24px;
+  border-collapse: collapse;
+}
+
+.resultado td {
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.resultado td:last-child {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.linhaFinal td {
+  border-bottom: none;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--verde-escuro);
+}
+
+.testes {
+  margin-top: 40px;
+}
+
+.testes h2 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.botoesTeste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.botoesTeste button {
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 7px 14px;
+  border: 1px solid var(--verde);
+  border-radius: 6px;
+  background: var(--fundo);
+  color: var(--verde-escuro);
+}
+
+.botoesTeste button:hover {
+  background: var(--fundo-secao);
+}
