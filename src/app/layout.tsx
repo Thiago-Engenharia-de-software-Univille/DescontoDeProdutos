@@ -14,10 +14,17 @@ export const metadata: Metadata = {
   description: "Calcula o desconto de uma compra de acordo com a quantidade.",
 };
 
+// Aplica o tema salvo antes da página pintar, evitando "piscada" de cor.
+const scriptTema =
+  "try{var t=localStorage.getItem('tema');if(t)document.documentElement.dataset.tema=t}catch(e){}";
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={poppins.variable}>
-      <body>{children}</body>
+    <html lang="pt-BR" className={poppins.variable} suppressHydrationWarning>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: scriptTema }} />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import {
@@ -8,6 +9,7 @@ import {
   formatarPercentual,
   type ResultadoDesconto,
 } from "@/lib/desconto";
+import TemaToggle from "./TemaToggle";
 import styles from "./page.module.css";
 
 type Separador = "," | ".";
@@ -76,6 +78,13 @@ export default function Home() {
 
   return (
     <main className={styles.pagina}>
+      <div className={styles.barraTopo}>
+        <Link href="/como-e-feito" className={styles.link}>
+          Como o código é feito &rarr;
+        </Link>
+        <TemaToggle />
+      </div>
+
       <header className={styles.cabecalho}>
         Univille &middot; Desenvolvimento Web
       </header>
