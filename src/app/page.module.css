@@ -36,12 +36,38 @@
   padding: 20px;
 }
 
+.separador {
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: var(--titulo);
+}
+
+.separador legend {
+  font-weight: 500;
+  padding: 0 6px;
+}
+
+.separador label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 16px;
+  font-weight: 400;
+}
+
 .campo {
   display: flex;
   flex-direction: column;
   gap: 6px;
   font-weight: 500;
   color: var(--titulo);
+}
+
+.dica {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--cinza);
 }
 
 .campo input {
