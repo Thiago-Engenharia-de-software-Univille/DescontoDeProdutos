@@ -1,0 +1,111 @@
+.pagina {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.barraTopo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--verde-escuro);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.titulo {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.intro {
+  color: var(--cinza);
+  margin-bottom: 24px;
+  max-width: 60ch;
+}
+
+.abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.aba {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.aba:hover {
+  border-color: var(--verde);
+}
+
+.abaAtiva {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #ffffff;
+}
+
+.explica {
+  background: var(--fundo-secao);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  color: var(--texto);
+}
+
+.bloco {
+  margin-bottom: 24px;
+}
+
+.bloco h2 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.arquivo {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  color: var(--cinza);
+  margin-bottom: 6px;
+}
+
+.codigo {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  background: var(--codigo-fundo);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--texto);
+  tab-size: 2;
+}
+
+.rodape {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borda);
+  color: var(--cinza);
+  font-size: 0.85rem;
+}

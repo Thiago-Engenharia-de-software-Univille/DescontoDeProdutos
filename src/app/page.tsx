@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 import {
@@ -8,7 +9,10 @@ import {
   formatarPercentual,
   type ResultadoDesconto,
 } from "@/lib/desconto";
+import TemaToggle from "./TemaToggle";
 import styles from "./page.module.css";
+
+type Separador = "," | ".";
 
 const CASOS_TESTE = [
   { preco: "100", quantidade: "3" },
@@ -16,20 +20,49 @@ const CASOS_TESTE = [
   { preco: "30", quantidade: "10" },
 ];
 
-function paraNumero(valor: string): number {
-  return Number(valor.trim().replace(",", "."));
+/** Mantém apenas dígitos e, no máximo, um separador decimal. */
+function limparPreco(valor: string, separador: Separador): string {
+  const escapado = separador === "." ? "\\." : ",";
+  let limpo = valor.replace(new RegExp(`[^0-9${escapado}]`, "g"), "");
+  const primeiro = limpo.indexOf(separador);
+  if (primeiro !== -1) {
+    limpo =
+      limpo.slice(0, primeiro + 1) +
+      limpo.slice(primeiro + 1).replace(new RegExp(escapado, "g"), "");
+  }
+  return limpo;
+}
+
+/** Mantém apenas dígitos (quantidade é sempre inteira). */
+function limparQuantidade(valor: string): string {
+  return valor.replace(/\D/g, "");
+}
+
+function paraNumero(valor: string, separador: Separador): number {
+  return Number(valor.split(separador).join("."));
 }
 
 export default function Home() {
+  const [separador, setSeparador] = useState<Separador>(",");
   const [preco, setPreco] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [resultado, setResultado] = useState<ResultadoDesconto | null>(null);
   const [erro, setErro] = useState("");
 
+  const exemploPreco = separador === "," ? "100,00" : "100.00";
+
+  function trocarSeparador(novo: Separador) {
+    setPreco((p) => p.replace(/[.,]/g, novo));
+    setSeparador(novo);
+  }
+
   function calcular(precoTexto: string, quantidadeTexto: string) {
     try {
       setResultado(
-        calcularDesconto(paraNumero(precoTexto), paraNumero(quantidadeTexto)),
+        calcularDesconto(
+          paraNumero(precoTexto, separador),
+          paraNumero(quantidadeTexto, separador),
+        ),
       );
       setErro("");
     } catch (e) {
@@ -45,6 +78,13 @@ export default function Home() {
 
   return (
     <main className={styles.pagina}>
+      <div className={styles.barraTopo}>
+        <Link href="/como-e-feito" className={styles.link}>
+          Como o código é feito &rarr;
+        </Link>
+        <TemaToggle />
+      </div>
+
       <header className={styles.cabecalho}>
         Univille &middot; Desenvolvimento Web
       </header>
@@ -59,15 +99,41 @@ export default function Home() {
       </ul>
 
       <form className={styles.formulario} onSubmit={aoEnviar}>
+        <fieldset className={styles.separador}>
+          <legend>Separador decimal</legend>
+          <label>
+            <input
+              type="radio"
+              name="separador"
+              checked={separador === ","}
+              onChange={() => trocarSeparador(",")}
+            />
+            Vírgula (100,00)
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="separador"
+              checked={separador === "."}
+              onChange={() => trocarSeparador(".")}
+            />
+            Ponto (100.00)
+          </label>
+        </fieldset>
+
         <label className={styles.campo}>
           Preço unitário (R$)
           <input
             type="text"
             inputMode="decimal"
             value={preco}
-            onChange={(e) => setPreco(e.target.value)}
-            placeholder="100,00"
+            onChange={(e) => setPreco(limparPreco(e.target.value, separador))}
+            placeholder={exemploPreco}
           />
+          <span className={styles.dica}>
+            Somente números e {separador === "," ? "vírgula" : "ponto"}. Exemplo:{" "}
+            {exemploPreco}
+          </span>
         </label>
 
         <label className={styles.campo}>
@@ -76,9 +142,12 @@ export default function Home() {
             type="text"
             inputMode="numeric"
             value={quantidade}
-            onChange={(e) => setQuantidade(e.target.value)}
+            onChange={(e) => setQuantidade(limparQuantidade(e.target.value))}
             placeholder="3"
           />
+          <span className={styles.dica}>
+            Somente números inteiros. Exemplo: 3
+          </span>
         </label>
 
         <button type="submit">Calcular</button>

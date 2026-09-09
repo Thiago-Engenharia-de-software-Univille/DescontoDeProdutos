@@ -13,6 +13,27 @@
   --fundo-secao: #f4f6f2;
   --borda: #dfe4de;
   --erro: #c0392b;
+  --erro-fundo: #fdecea;
+  --codigo-fundo: #f6f8f4;
+}
+
+:root[data-tema="escuro"] {
+  color-scheme: dark;
+
+  --verde: #63c257;
+  --verde-escuro: #7bd06f;
+  --lima: #cfe000;
+  --lima-escuro: #b9c800;
+
+  --texto: #d7dcd7;
+  --titulo: #e9ece9;
+  --cinza: #9aa199;
+  --fundo: #12140f;
+  --fundo-secao: #1a1d16;
+  --borda: #2e352b;
+  --erro: #ff8b7f;
+  --erro-fundo: #2e1613;
+  --codigo-fundo: #1a1d16;
 }
 
 * {
@@ -42,4 +63,32 @@ h2 {
 
 a {
   color: var(--verde-escuro);
+}
+
+/* Botão de tema (usado em todas as páginas) */
+.tema-toggle {
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 6px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.tema-toggle:hover {
+  border-color: var(--verde);
+}
+
+.tema-so-escuro {
+  display: none;
+}
+
+html[data-tema="escuro"] .tema-so-claro {
+  display: none;
+}
+
+html[data-tema="escuro"] .tema-so-escuro {
+  display: inline;
 }

@@ -28,6 +28,16 @@ Validações:
 A lógica fica isolada em [`src/lib/desconto.ts`](src/lib/desconto.ts); a interface
 está em [`src/app/page.tsx`](src/app/page.tsx).
 
+## Páginas
+
+| Rota | O que é |
+| --- | --- |
+| `/` | A calculadora |
+| `/como-e-feito` | O mesmo código escrito em JavaScript, TypeScript e React |
+
+Há botões para navegar entre as duas e um botão de **tema claro/escuro**
+(a escolha fica salva no navegador).
+
 ## Rodando localmente
 
 ```bash
@@ -40,8 +50,17 @@ Outros comandos:
 ```bash
 npm run build      # build de produção
 npm test           # testes das regras de negócio (node:test)
+npm run exemplo    # roda exemplo-logica.ts no terminal (demonstração da lógica)
 npm run lint
 ```
+
+## Documentação
+
+- [`EXPLICACAO.md`](EXPLICACAO.md) — explicação de todo o código (as duas
+  páginas, a lógica, o tema e os testes), com links que levam direto às linhas
+  correspondentes.
+- [`exemplo-logica.ts`](exemplo-logica.ts) — versão enxuta e comentada só da
+  regra de negócio, para leitura/demonstração (`npm run exemplo`).
 
 ## Testes
 
